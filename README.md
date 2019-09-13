@@ -13,17 +13,17 @@ Before the code challenge begins, you will receive a user ID from your instructo
 1. Fork and clone this repository.
 2. After cloning down the project, run `npm install`.
 3. You can boot up the server with `npm start`. It should automaticaly run on `localhost:3000`.
-4. The backend for this code challenge is hosted on heroku at: https://bayside-high.herokuapp.com/, and the specific endpoints available for use are listed below in the deliverables section.
+4. The backend for this code challenge is hosted on heroku at: https://warm-shore-17060.herokuapp.com/, and the specific endpoints available for use are listed below in the deliverables section.
 5. The app uses [Semantic UI](https://semantic-ui.com/) for styling. If you see any unfamiliar classNames on some components, don't sweat! That's coming from Semantic UI and you shouldn't need to touch it.
 
 ## Endpoints
 
 The endpoints you need to hit are listed below. *Note: the routes below are the only routes that exist on this API. If you try to visit other routes, you'll get an error page.*
 
-* GET: `https://bayside-high.herokuapp.com/api/v1/users/:user_id/courses`
+* GET: `https://warm-shore-17060.herokuapp.com/api/v1/users/:user_id/courses`
 Returns an array of all courses.
 ```
-GET: `https://bayside-high.herokuapp.com/api/v1/users/:user_id/courses`
+GET: `https://warm-shore-17060.herokuapp.com/api/v1/users/:user_id/courses`
 
 Example Response:
   [
@@ -54,10 +54,10 @@ Example Response:
   ]
 ```
 
-* GET: `https://bayside-high.herokuapp.com/api/v1/users/:user_id/courses/:id`
+* GET: `https://warm-shore-17060.herokuapp.com/api/v1/users/:user_id/courses/:id`
 Returns a single course and all of its students. Example GET fetch for course 1:
 ```
-GET 'https://bayside-high.herokuapp.com/api/v1/users/:user_id/courses/:id'
+GET 'https://warm-shore-17060.herokuapp.com/api/v1/users/:user_id/courses/:id'
 
 Example Response:
   {
@@ -82,10 +82,10 @@ Example Response:
     ]
   }
 ```
-* PATCH: `https://bayside-high.herokuapp.com/api/v1/users/:user_id/students/:id`
+* PATCH: `https://warm-shore-17060.herokuapp.com/api/v1/users/:user_id/students/:id`
 Returns updated student data. Example PATCH for student 1:
 ```
-PATCH: 'https://bayside-high.herokuapp.com/api/v1/users/:user_id/students/:id'
+PATCH: 'https://warm-shore-17060.herokuapp.com/api/v1/users/:user_id/students/:id'
 
 Required keys in the body of the request:
 {
@@ -112,11 +112,11 @@ Example Response:
 ## Deliverables
 Below are the deliverables you should create.
 
-1. Get the list of courses from `https://bayside-high.herokuapp.com/api/v1/users/:user_id/courses`. (If you can't get the fetch working, try visiting that URL in your browser and just copying the data and pasting it into your state so you can move onto the next steps.) There is some code in CourseSelector that is commented out so as to not break your app. Once you have access to the courses, uncomment that code and hook up the dropdown menu to display those course options.
+1. Get the list of courses from `https://warm-shore-17060.herokuapp.com/api/v1/users/:user_id/courses`. (If you can't get the fetch working, try visiting that URL in your browser and just copying the data and pasting it into your state so you can move onto the next steps.) There is some code in CourseSelector that is commented out so as to not break your app. Once you have access to the courses, uncomment that code and hook up the dropdown menu to display those course options.
 2. Ensure that the dropdown course menu updates the currentCourse state in CourseContainer. You should also show the name of the current course as a header in CourseContainer.
-3. On change of the dropdown course menu, a call should be placed to the API to load all the students for that course into the students state. This information can be retrieved from the endpoint for each course: `https://bayside-high.herokuapp.com/api/v1/users/:user_id/courses/:id`. Make sure you know how the data you receive from the API is structured.
+3. On change of the dropdown course menu, a call should be placed to the API to load all the students for that course into the students state. This information can be retrieved from the endpoint for each course: `https://warm-shore-17060.herokuapp.com/api/v1/users/:user_id/courses/:id`. Make sure you know how the data you receive from the API is structured.
 4. Make student information editable using the edit form. Clicking the button next to a student should populate the edit form with information for that student by updating state. Make this form a controlled component.
-5. Only move on to this step after you have completed deliverables 1-4. On submit, persist the updated student information to the API using a PATCH request to `https://bayside-high.herokuapp.com/api/v1/users/:user_id/students/:id`. The updated student information should also be reflected on the front end. (When using `fetch` to make a PATCH request, make sure you capitalize the `{method: 'PATCH'}`)
+5. Only move on to this step after you have completed deliverables 1-4. On submit, persist the updated student information to the API using a PATCH request to `https://warm-shore-17060.herokuapp.com/api/v1/users/:user_id/students/:id`. The updated student information should also be reflected on the front end. (When using `fetch` to make a PATCH request, make sure you capitalize the `{method: 'PATCH'}`)
 
 ![example project](public/app.gif)
 
