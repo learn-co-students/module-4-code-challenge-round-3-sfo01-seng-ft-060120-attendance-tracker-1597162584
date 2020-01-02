@@ -1,4 +1,4 @@
-# React Immersive Code Challenge
+# Bayside High Attendance Tracker
 
 ## Demo
 
@@ -8,7 +8,7 @@ Use this gif as an example of how the app should work.
 
 ## Instructions
 
-For this project, you’ll be building out a React application that displays a list of student grades.
+For this project, you’ll be building out a React application that displays a list of student attendance per course.
 
 Part of what this code challenge is testing is your ability to follow given instructions. While you will have some freedom in how you implement the features, be sure to carefully read the directions and follow the steps in order to build the application. **It would be better to deliver 3 working and 2 not-working deliverables rather 5 half-working deliverables.**
 
@@ -101,7 +101,7 @@ Example Response:
 }
 ```
 
-## Deliverables
+## Core Deliverables
 
 Below are the deliverables you should create.
 
@@ -113,7 +113,11 @@ Below are the deliverables you should create.
 
 4. When I refresh my app, I can still see any changes I made previously.
 
-## Bonus deliverables
+## Advanced Deliverables
+
+These deliverables are not required to pass the code challenge, but if you have the extra time, or even after the code challenge, they are a great way to stretch your skills.
+
+> Note: If you are going to attempt these advanced deliverables, please be be sure to have a working commit with all the Core Deliverables first!
 
 1. I can sort students by name or attending status.
 
