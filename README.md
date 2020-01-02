@@ -1,135 +1,158 @@
 # React Immersive Code Challenge
 
+## Demo
+
+Use this gif as an example of how the app should work.
+
+![example project](public/app.gif)
+
 ## Instructions
 
 For this project, you’ll be building out a React application that displays a list of student grades.
 
 Part of what this code challenge is testing is your ability to follow given instructions. While you will have some freedom in how you implement the features, be sure to carefully read the directions and follow the steps in order to build the application. **It would be better to deliver 3 working and 2 not-working deliverables rather 5 half-working deliverables.**
 
-Before the code challenge begins, you will receive a user ID from your instructors. You will use this anywhere you see `user_id` to get access to your own set of data. If you do not yet have an ID, please let an instructor know.
-
 ## Setup
 
 1. Fork and clone this repository.
-2. After cloning down the project, run `npm install`.
-3. You can boot up the server with `npm start`. It should automaticaly run on `localhost:3000`.
-4. The backend for this code challenge is hosted on heroku at: https://warm-shore-17060.herokuapp.com/, and the specific endpoints available for use are listed below in the deliverables section.
-5. The app uses [Semantic UI](https://semantic-ui.com/) for styling. If you see any unfamiliar classNames on some components, don't sweat! That's coming from Semantic UI and you shouldn't need to touch it.
+
+2. Run `npm start`: This will open both your React page on port `6000` and your backend on port `6001`.
+
+3. The app uses [Semantic UI](https://semantic-ui.com/) for styling. If you see any unfamiliar classNames on some components, don't sweat! That's coming from Semantic UI and you shouldn't need to touch it.
 
 ## Endpoints
 
-The endpoints you need to hit are listed below. *Note: the routes below are the only routes that exist on this API. If you try to visit other routes, you'll get an error page.*
+The base URL for your backend is: `http://localhost:6001`
 
-* GET: `https://warm-shore-17060.herokuapp.com/api/v1/users/:user_id/courses`
+The endpoints you need to hit are:
+
+- GET: `/courses`
+
 Returns an array of all courses.
+
 ```
-GET: `https://warm-shore-17060.herokuapp.com/api/v1/users/:user_id/courses`
+GET: http://localhost:6001/courses
 
 Example Response:
-  [
-    {
-      id: 101,
-      name: "Swift for Beginners",
-      instructor: "Joe Burgess",
-      semester: "Summer 2017"
-    },
-    {
-      id: 102,
-      name: "Knitting Hats for Cats",
-      instructor: "Tim Campbell",
-      semester: "Winter 2017"
-    },
-    {
-      id: 103,
-      name: "Rock Climbing",
-      instructor: "Avi Flombaum",
-      semester: "Spring 2017"
-    },
-    {
-      id: 104,
-      name: "Home Ec",
-      instructor: "Jeff Katz",
-      semester: "Winter 2017"
-    }
-  ]
-```
-
-* GET: `https://warm-shore-17060.herokuapp.com/api/v1/users/:user_id/courses/:id`
-Returns a single course and all of its students. Example GET fetch for course 1:
-```
-GET 'https://warm-shore-17060.herokuapp.com/api/v1/users/:user_id/courses/:id'
-
-Example Response:
+[
   {
-    "id": 1,
-    "name": "Knitting Hats for Cats",
-    "instructor": "Tim Campbell",
-    "semester": "Winter 2017",
-    "students": [
-      {
-        "id": 10,
-        "name": "Irwin Ledner",
-        "class_year": 12,
-        "percentage": 91
-      },
-      {
-        "id": 13,
-        "name": "Jordane Glover",
-        "class_year": 11,
-        "percentage": 72
-      },
-      ...
-    ]
-  }
+    "id": 269,
+    "name": "Rock Climbing",
+    "instructor": "Avi Flombaum",
+    "semester": "Spring 2017",
+  },
+  ...
+]
 ```
-* PATCH: `https://warm-shore-17060.herokuapp.com/api/v1/users/:user_id/students/:id`
-Returns updated student data. Example PATCH for student 1:
-```
-PATCH: 'https://warm-shore-17060.herokuapp.com/api/v1/users/:user_id/students/:id'
 
-Required keys in the body of the request:
+- GET: `/students`
+
+Returns an array of all courses.
+
+```
+GET: http://localhost:6001/students
+
+Example Response:
+[
+    {
+      "id": 5945,
+      "name": "Mr. Princess Predovic",
+      "class_year": 11,
+      "percentage": 93,
+      "course": "Having a good time",
+      "attending": true
+    },
+    ...
+]
+```
+
+- PATCH: `/students/:id`
+
+Modify a student.
+
+```
+PATCH: http://localhost:3001/students/5945
+
+Required headers:
 {
-  class_year: <class_year value from edit form>,
-  name: <name value from edit form>,
-  percentage: <percentage value from edit form>
+  "Content-Type": "application/json"
 }
 
-Required Headers
+Required body:
+// any of the following fields you'd like to change
 {
-  "Content-Type": "application/json",
-  "Accept": "application/json"
+  "id": 5945,
+  "name": "Mr. Princess Predovic",
+  "class_year": 11,
+  "percentage": 93,
+  "course": "Having a good time",
+  "attending": true
 }
 
 Example Response:
+
 {
-  class_year: 10,
-  id: 15,
-  name: "Leopoldo O'Keefe",
-  percentage: 93
+  "id": 5945,
+  "name": "Mr. Princess Predovic",
+  "class_year": 11,
+  "percentage": 93,
+  "course": "Having a good time",
+  "attending": true
 }
 ```
 
 ## Deliverables
+
 Below are the deliverables you should create.
 
-1. Get the list of courses from `https://warm-shore-17060.herokuapp.com/api/v1/users/:user_id/courses`. (If you can't get the fetch working, try visiting that URL in your browser and just copying the data and pasting it into your state so you can move onto the next steps.) There is some code in CourseSelector that is commented out so as to not break your app. Once you have access to the courses, uncomment that code and hook up the dropdown menu to display those course options.
-2. Ensure that the dropdown course menu updates the currentCourse state in CourseContainer. You should also show the name of the current course as a header in CourseContainer.
-3. On change of the dropdown course menu, a call should be placed to the API to load all the students for that course into the students state. This information can be retrieved from the endpoint for each course: `https://warm-shore-17060.herokuapp.com/api/v1/users/:user_id/courses/:id`. Make sure you know how the data you receive from the API is structured.
-4. Make student information editable using the edit form. Clicking the button next to a student should populate the edit form with information for that student by updating state. Make this form a controlled component.
-5. Only move on to this step after you have completed deliverables 1-4. On submit, persist the updated student information to the API using a PATCH request to `https://warm-shore-17060.herokuapp.com/api/v1/users/:user_id/students/:id`. The updated student information should also be reflected on the front end. (When using `fetch` to make a PATCH request, make sure you capitalize the `{method: 'PATCH'}`)
+1. When the app starts, I can see and select a list of courses.
 
-![example project](public/app.gif)
+2. When I select a course, I can see all students currently enlisted to it.
 
-Use the above gif as an example of how the app should function.
+3. I can toggle whether a student is attending or not, and I can see the changes on the screen immediately.
 
-## Criteria
+4. When I refresh my app, I can still see any changes I made previously.
 
-We’ll be evaluating your code based on the following criteria:
+## Bonus deliverables
 
-* **React Components:** Does the app reasonably separate responsibilities into components and a have a component hierarchy?
-* **Props:** Does the app have at least one presentational component that receives props? Does the app pass props down from a higher-level component to a lower one? Does the app make use of passing a functional prop?
-* **State:** Does the app have a dropdown menu that responds to changes and calls this.setState? If an individual student is updated, does the state reflect that change?
-* **API:** Does the app make a fetch request to the API and return data? Does the update API call correctly persist student changes in the back end?
-* **Best Practices:** Does the app follow best practices regarding state and component composition? Is code structured cleanly? Are functions defined in the components they are most related to?
+1. I can sort students by name or attending status.
 
-Good luck!
+2. I can change which course a student is enlisted to.
+
+## Rubric
+
+### Props & State
+
+1. No code or very little code has been written or the code doesn't run. If it runs, no deliverables have been met. Not managed to set state or pass props successfully.
+
+2. State is not being set or updated. Props are not being passed down, or you are passing down the right prop but trying to access it incorrectly (wrong name, unnecessary `this`, `state` instead of `props`) or key props are missing. API call does not successfully populate state.
+
+3. State is working. However, it may be in the wrong component, it might be nested oddly or might have some unnecessary state. Props are being passed unnecessarily to components. Functions that change or calculate state are not defined in the component that they are most closely tied to.
+
+4. State works and is held by the lowest common component. No unnecessary state is created. Only the necessary props are being passed down. Functions used to edit state are passed down.
+
+5. Advanced deliverables are met.
+
+### Code Structure/Efficiency
+
+1. No code or very little code has been written or the code doesn't run, i.e. syntax errors, imports missing, etc. If it runs, no deliverables have been met.
+
+2. Starter components have been unnecessarily modified and broken. There is no reference to componentDidMount. Incorrect or unnecessary lifecycle methods are used.
+
+3. Fetch is triggered in the right place. Code is not abstracted into clear methods. Additional components have been added which serve no purpose. Props and variables could be named consistently and descriptively.
+
+4. Components are structured in a logical way. Class components only used when needed, functional components used for everything else. Code is abstracted into clear methods. Used object destructuring and spread operator successfully.
+
+5. Advanced deliverables met. Uses some of the following: destructuring, functional components, spreading, hooks, pure functions, performance is taken into account.
+
+### Rendering
+
+1. No code or very little code has been written or the code doesn't run. If it runs, no deliverables have been met.
+
+2. Did not manage to render everything that was asked for in the deliverables.
+
+3. Renders everything that is asked for in the deliverables. Components could be more abstract/reusable. May have created own components instead of using the components provided.
+
+4. Renders everything that is asked for in the deliverables. Components are abstract/reusable. No unnecessary components were created.
+
+5. Everything from 4 plus extra features were added that are not listed in the deliverables.
