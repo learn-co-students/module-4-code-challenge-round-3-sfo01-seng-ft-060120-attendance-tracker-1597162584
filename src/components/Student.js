@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const Student = () => (
   <tr style={{ textAlign: 'center' }}>
@@ -13,6 +13,6 @@ const Student = () => (
       />
     </td>
   </tr>
-);
+)
 
-export default Student;
+export default Student
