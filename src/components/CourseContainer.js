@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import CourseDetails from "./CourseDetails";
-import CourseSelector from "./CourseSelector";
-import StudentsList from "./StudentsList";
+import React, { Component } from 'react'
+import CourseDetails from './CourseDetails'
+import CourseSelector from './CourseSelector'
+import StudentsList from './StudentsList'
 
 class CourseContainer extends Component {
-  render() {
+  render () {
     return (
-      <div className="ui grid container">
+      <div className='ui grid container'>
         <CourseDetails />
         <CourseSelector />
         <StudentsList />
       </div>
-    );
+    )
   }
 }
 
-export default CourseContainer;
+export default CourseContainer
