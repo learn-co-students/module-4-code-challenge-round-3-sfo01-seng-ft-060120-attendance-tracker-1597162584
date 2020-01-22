@@ -1,20 +1,33 @@
-import React from "react";
+import React from 'react'
 
-const CourseSelector = () => {
+const CourseSelector = props => {
   return (
-    <div className="sixteen wide column">
-      <select className="ui dropdown" onChange={()=> console.log('handle change')} >
-        {/* Pass through a list of courses and map through it below to generate the individual options in your dropdown. */}
-        {/* {courseList.map((course, i) => {
+    <div className='sixteen wide column'>
+      <select
+        className='ui dropdown'
+        onChange={() => console.log('CourseSelector handle change here!')}
+        defaultValue='select'
+      >
+        {/* you shouldn't need to touch these options below */}
+        <option value='select' disabled>
+          Select a course
+        </option>
+        {props.courses.map(course => {
           return (
-            <option key={i} className="item" value={course.id}>
+            <option key={course.id} className='item' value={course.id}>
               {course.name}
             </option>
-          );
-        })} */}
+          )
+        })}
       </select>
     </div>
-  );
-};
+  )
+}
 
-export default CourseSelector;
+// This makes it so, when no courses are passed
+// CourseDetails will still get courses, but it will be an empty array.
+CourseSelector.defaultProps = {
+  courses: []
+}
+
+export default CourseSelector
