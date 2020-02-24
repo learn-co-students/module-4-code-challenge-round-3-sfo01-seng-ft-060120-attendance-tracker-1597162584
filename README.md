@@ -117,7 +117,7 @@ Below are the deliverables you should create.
 
 These deliverables are not required to pass the code challenge, but if you have the extra time, or even after the code challenge, they are a great way to stretch your skills.
 
-> Note: If you are going to attempt these advanced deliverables, please be be sure to have a working commit with all the Core Deliverables first!
+> Note: If you are going to attempt these advanced deliverables, please be sure to have a working commit with all the Core Deliverables first!
 
 1. I can sort students by name or attending status.
 
